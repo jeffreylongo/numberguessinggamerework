@@ -8,71 +8,43 @@ namespace numberguessinggamerework
 {
     class Program
     {
-        static void Main(string[] args)
+        static List<int> AlreadyGuessedNumbers = new List<int>();
+        static void AlreadyGuessed(int guess)
         {
-            var target = new Random().Next(1, 101);
-            Console.WriteLine($"the target is {target}");
+            AlreadyGuessedNumbers.Add(guess);
+        }
 
-            var counter = 0;
-            var guess = 0;
-            var pastGuess = new int[5];
-            while (counter < 5 && guess != target)
-            {
-                Console.WriteLine("Give me your best guess");
-                var input = Console.ReadLine();
-                int.TryParse(input, out guess);
+        static int PromptAndOutput()
+        {
+            Console.WriteLine("Give me your best guess");
+            var input = Console.ReadLine();
+            int.TryParse(input, out int guess);
+            return guess;
+        }
 
-                var wasAlreadyGuess = false;
-                foreach (var userGuess in pastGuess)
-                {
-                    if (guess == userGuess)
-                    {
-                        wasAlreadyGuess = true;
-                    }
-                }
-
-                if (wasAlreadyGuess)
-                {
-                    Console.WriteLine("You aalready guesses that, foool");
-                }
-                else
-                {
-                    pastGuess[counter] = guess;
-
-                    Console.WriteLine($"your guess was {guess}");
-
-                    if (guess < target)
-                    {
-                        Console.WriteLine("Too low, try again.");
-                    }
-                    else if (guess > target)
-                    {
-                        Console.WriteLine("Too high, try again");
-                    }
-
-                    Console.WriteLine("Your past guesses are:");
-                }
-                foreach (var userGuess in pastGuess)
-                {
-                    if (userGuess != 0)
-                    {
-                        Console.Write($"{userGuess},");
-                    }
-                }
-                counter++;
-            }
-
+        static string EndingCredit(int counter)
+        {
             if (counter > 4)
             {
-                Console.WriteLine("You lost :-(");
+                return "You Lose";
             }
             else
             {
-                Console.WriteLine("You Won!");
+                return "You Win";
             }
+        }
+        static void Main(string[] args)
+        {
+            int rnd = new Random().Next(1, 101);
+            Console.WriteLine(rnd);
+
+            var myguess = PromptAndOutput();
+            var counter = 0;
+            Console.WriteLine(EndingCredit(counter));
+
+            counter++;
+
             Console.ReadLine();
-
-
         }
     }
 }
