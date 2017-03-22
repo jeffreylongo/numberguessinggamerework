@@ -38,17 +38,24 @@ namespace numberguessinggamerework
             int rnd = new Random().Next(1, 101);
             Console.WriteLine(rnd);
 
-            var myguess = PromptAndOutput();
+            var myguess = 0;
             var counter = 0;
 
 
             while (counter < 5 && myguess != rnd)
             {
-                PromptAndOutput();
-
+                myguess = PromptAndOutput();
+                 if (myguess < rnd)
+                {
+                    Console.WriteLine("low try again");
+                }
+                 else if (myguess > rnd)
+                {
+                    Console.WriteLine("you're high, try again");
+                }
                 counter++;
 
-                EndingCredit(counter);
+                //EndingCredit(counter);
                 
             }
 
