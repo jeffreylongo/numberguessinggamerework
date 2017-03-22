@@ -40,9 +40,18 @@ namespace numberguessinggamerework
 
             var myguess = PromptAndOutput();
             var counter = 0;
-            Console.WriteLine(EndingCredit(counter));
 
-            counter++;
+
+            while (counter < 5 && myguess != rnd)
+            {
+                PromptAndOutput();
+
+                counter++;
+
+                EndingCredit(counter);
+                
+            }
+
 
             Console.ReadLine();
         }
