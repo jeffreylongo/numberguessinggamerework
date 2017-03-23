@@ -53,6 +53,10 @@ namespace numberguessinggamerework
                 {
                     Console.WriteLine("you're high, try again");
                 }
+                else
+                {
+                    Console.WriteLine("You got a bingo");
+                }
                 counter++;
 
                 EndingCredit(counter);
