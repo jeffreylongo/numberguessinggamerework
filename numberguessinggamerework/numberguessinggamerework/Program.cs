@@ -45,18 +45,19 @@ namespace numberguessinggamerework
             while (counter < 5 && myguess != rnd)
             {
                 myguess = PromptAndOutput();
-                 if (myguess < rnd)
+                if (myguess < rnd)
                 {
                     Console.WriteLine("low try again");
                 }
-                 else if (myguess > rnd)
+                else if (myguess > rnd)
                 {
                     Console.WriteLine("you're high, try again");
                 }
                 counter++;
 
-                //EndingCredit(counter);
-                
+                EndingCredit(counter);
+                Console.ReadLine();
+
             }
 
 
